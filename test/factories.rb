@@ -14,4 +14,5 @@ Factory.define :member do |f|
   f.sequence :name do |n|
     "Member #{n}"
   end
+  f.photo "http://example.com/"
 end
