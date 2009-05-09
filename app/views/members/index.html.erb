@@ -9,7 +9,7 @@
 <% @members.each do |member| %>
   <tr>
     <td><%= link_to image_tag(member.photo) + h(member.name), member %></td>
-    <td><%= link_to h(member.party), member.party %></td>
+    <td><%= link_to h(member.party), member %></td>
   </tr>
 <% end %>
 </table>

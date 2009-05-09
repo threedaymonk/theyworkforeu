@@ -1,0 +1,6 @@
+<h2>Recent sittings</h2>
+<ul>
+  <% for sitting in Sitting.all %>
+	<li><%= link_to h(sitting.title), sitting %></li>
+  <% end %>
+</ul>

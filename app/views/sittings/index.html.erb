@@ -1,22 +1,9 @@
-<h1>Listing sittings</h1>
-
-<table>
-  <tr>
-    <th>Sat on</th>
-    <th>Location</th>
-  </tr>
+<% @page_title = 'European Parliament sittings' %>
+<h1>European Parliament sittings</h1>
 
 <% @sittings.each do |sitting| %>
-  <tr>
-    <td><%=h sitting.sat_on %></td>
-    <td><%=h sitting.location %></td>
-    <td><%= link_to 'Show', sitting %></td>
-    <td><%= link_to 'Edit', edit_sitting_path(sitting) %></td>
-    <td><%= link_to 'Destroy', sitting, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div>
+  <%= link_to sitting.sat_on, sitting %>
+  <%=h sitting.location %>
+</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New sitting', new_sitting_path %>
