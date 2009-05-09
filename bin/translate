@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), "..", "config", "environment")
+
+Contribution.untranslated.each do |contribution|
+  begin
+    translation = Europarl::Translator.translate(contribution.original_text)
+  rescue => e
+    puts e.message
+    exit
+  end
+  puts contribution.original_text, '', translation, '-' * 80
+  contribution.translated_text = translation
+  contribution.save!
+  sleep 2
+end

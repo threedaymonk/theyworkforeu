@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), "..", "config", "environment")
+require 'open-uri'
+
+date = Date.parse(ARGV[0])
+location = ARGV[1]
+
+sitting = Sitting.create!(:sat_on => date, :location => location)
+html = open(Europarl::Scraper.debates_url(date)){ |f| f.read }
+scraper = Europarl::Scraper.new(html, sitting)
+scraper.each_contribution do |c|
+  puts c.original_text, ""
+  c.save!
+end
