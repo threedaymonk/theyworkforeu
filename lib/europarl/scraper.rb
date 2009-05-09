@@ -38,6 +38,7 @@ module Europarl
           contribution = new_contribution
           contribution.original_text = value
           yield contribution
+          contribution = new_contribution
         when :image
           yield contribution if contribution.original_text
           contribution = new_contribution
