@@ -1,0 +1,24 @@
+<h1>Listing contributions</h1>
+
+<table>
+  <tr>
+    <th>Original text</th>
+    <th>Translated text</th>
+    <th>Member</th>
+  </tr>
+
+<% @contributions.each do |contribution| %>
+  <tr>
+    <td><%=h contribution.original_text %></td>
+    <td><%=h contribution.translated_text %></td>
+    <td><%=h contribution.member_id %></td>
+    <td><%= link_to 'Show', contribution %></td>
+    <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+    <td><%= link_to 'Destroy', contribution, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New contribution', new_contribution_path %>

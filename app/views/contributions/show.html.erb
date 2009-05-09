@@ -1,0 +1,18 @@
+<p>
+  <b>Original text:</b>
+  <%=h @contribution.original_text %>
+</p>
+
+<p>
+  <b>Translated text:</b>
+  <%=h @contribution.translated_text %>
+</p>
+
+<p>
+  <b>Member:</b>
+  <%=h @contribution.member_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>

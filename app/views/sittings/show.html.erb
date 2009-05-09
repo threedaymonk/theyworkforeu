@@ -1,0 +1,13 @@
+<p>
+  <b>Sat on:</b>
+  <%=h @sitting.sat_on %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @sitting.location %>
+</p>
+
+
+<%= link_to 'Edit', edit_sitting_path(@sitting) %> |
+<%= link_to 'Back', sittings_path %>
