@@ -1,7 +1,4 @@
-$:.unshift(File.join(File.dirname(__FILE__), "..", "..", "lib"))
-require "test/unit"
-require "shoulda"
-require "europarl/scraper"
+require File.join(File.dirname(__FILE__), "..", "test_helper")
 
 class ScraperTest < Test::Unit::TestCase
 
