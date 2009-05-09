@@ -63,7 +63,7 @@ module Europarl
     end
 
     def strip(s)
-      s.gsub(/<[^>]+>/m, '').gsub(/\s+/, ' ').strip
+      s.gsub(/<[^>]+>/m, '').gsub(/\s+| /m, ' ').strip
     end
   end
 end
