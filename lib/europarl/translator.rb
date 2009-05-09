@@ -12,18 +12,18 @@ module Europarl
     MAX_LENGTH = 4000
 
     def self.translate(text, to="en", from="")
-      paragraphs = text.split(/\n/)
+      paragraphs = text.split(/<p>/)
       chunks = [[]]
       paragraphs.each do |paragraph|
-        if (chunks.last + [paragraph]).join("\n").length < MAX_LENGTH
+        if (chunks.last + [paragraph]).join("<p>").length < MAX_LENGTH
           chunks.last << paragraph
         else
           chunks << [paragraph]
         end
       end
       chunks.map{ |chunk|
-        real_translate(chunk.join("\n"))
-      }.join("\n")
+        real_translate(chunk.join("<p>"))
+      }.join("<p>")
     end
 
     def self.real_translate(text, to="en", from="")
