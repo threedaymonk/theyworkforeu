@@ -36,3 +36,7 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+require "shoulda"
+require "factory_girl"
+require File.join(File.dirname(__FILE__), "factories")
