@@ -20,6 +20,7 @@ module Europarl
         when /^<p/
           match.gsub!(%r{<span class="doc_subtitle_level1_bis">(.*?)</span>}m) do
             yield :member, strip($1)
+            ""
           end
           yield :para, strip(match)
         end
