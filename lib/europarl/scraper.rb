@@ -5,8 +5,9 @@ module Europarl
       date.strftime(DEBATES_URL)
     end
 
-    def initialize(html)
+    def initialize(html, sitting)
       @html = html
+      @sitting = sitting
     end
 
     def scrape
@@ -19,6 +20,7 @@ module Europarl
         when /^<p/
           match.gsub!(%r{<span class="doc_subtitle_level1_bis">(.*?)</span>}m) do
             yield :member, strip($1)
+            ""
           end
           yield :para, strip(match)
         end
@@ -26,8 +28,43 @@ module Europarl
       nil
     end
 
+    def each_contribution
+      contribution = new_contribution
+      image = nil
+      scrape do |key, value|
+        case key
+        when :title
+          yield contribution if contribution.original_text
+          contribution = new_contribution
+          contribution.original_text = value
+          yield contribution
+          contribution = new_contribution
+        when :image
+          yield contribution if contribution.original_text
+          contribution = new_contribution
+          image = "http://www.europarl.europa.eu" + value
+        when :member
+          member = Member.find_by_photo(image)
+          unless member
+            member = Member.create!(:name => value, :photo => image)
+          end
+          contribution.member = member
+        when :para
+          contribution.original_text ||= ""
+          contribution.original_text << value << "\n"
+        end
+      end
+      yield contribution if contribution.original_text
+    end
+
+  private
+
+    def new_contribution
+      Contribution.new(:sitting => @sitting)
+    end
+
     def strip(s)
-      s.gsub(/<[^>]+>/m, '').gsub(/\s+/, ' ').strip
+      s.gsub(/<[^>]+>/m, '').gsub(/\s+| /m, ' ').strip
     end
   end
 end
