@@ -1,18 +1,9 @@
-<p>
-  <b>Name:</b>
-  <%=h @member.name %>
-</p>
+<% @page_title = h @member.name %>
+<h1><%=h @member.name %></h1>
+
+<%= image_tag(@member.photo) %>
 
 <p>
   <b>Party:</b>
   <%=h @member.party %>
 </p>
-
-<p>
-  <b>Photo:</b>
-  <%=h @member.photo %>
-</p>
-
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>

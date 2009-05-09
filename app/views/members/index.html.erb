@@ -4,17 +4,12 @@
   <tr>
     <th>Name</th>
     <th>Party</th>
-    <th>Photo</th>
   </tr>
 
 <% @members.each do |member| %>
   <tr>
-    <td><%=h member.name %></td>
-    <td><%=h member.party %></td>
-    <td><%=h member.photo %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag(member.photo) + h(member.name), member %></td>
+    <td><%= link_to h(member.party), member.party %></td>
   </tr>
 <% end %>
 </table>
