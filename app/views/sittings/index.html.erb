@@ -1,9 +1,10 @@
 <% @page_title = 'European Parliament sittings' %>
-<h1>European Parliament sittings</h1>
-
-<% @sittings.each do |sitting| %>
-<div>
-  <%= link_to sitting.sat_on, sitting %>
-  <%=h sitting.location %>
+<div class="info">
+  <h1>European Parliament sittings</h1>
+  <% @sittings.each do |sitting| %>
+  <div>
+    <%= link_to sitting.sat_on, sitting %>
+    <%=h sitting.location %>
+  </div>
+  <% end %>
 </div>
-<% end %>

@@ -1,19 +1,9 @@
-<h1>Listing members</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Party</th>
-  </tr>
-
-<% @members.each do |member| %>
-  <tr>
-    <td><%= link_to image_tag(member.photo) + h(member.name), member %></td>
-    <td><%= link_to h(member.party), member %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New member', new_member_path %>
+<% @page_title = 'European Parliament Members' %>
+<div class="info">
+  <h1>European Parliament Members</h1>
+  <div class="photoList">
+  <% @members.each do |member| %>
+    <div class="photoListMember"><%= link_to image_tag(member.photo, :width=>85) + h(member.name), member %>, <%= link_to h(member.party), member %></div>
+  <% end %>
+  </div>
+</div>

@@ -7,63 +7,13 @@
 </head>
 <body>
 <div id="header">
-  <div id="logo">
-    <h1><a href="/">TheyWorkFor.EU</a></h1>
-    <p>Making the proceedings of the European Parliament more accessible.</p>
-  </div>
-  <!-- end #logo -->
-  <div id="menu">
-    <ul>
-      <li class="first"><a href="/">Home</a></li>
-      <li><%= link_to 'Members', members_path %></li>
-      <li><%= link_to 'Sittings', sittings_path %></li>
-    </ul>
-  </div>
-  <!-- end #menu -->
+	<h2><a href="/">TheyWorkFor.EU</a></h2>
+	<p>The European Parliament in your language</p>
 </div>
-<!-- end #header -->
-<div id="page">
-  <div id="content">
 
-    <%= yield %>
+<div id="content">
+	<%= yield %>
+</div>
 
-  </div>
-  <!-- end #content -->
-  <div id="sidebar">
-      <ul>
-        <li id="search">
-          <h2>Search</h2>
-          <form method="get" action="">
-            <fieldset>
-            <input type="text" id="s" name="s" value="" />
-            <input type="submit" id="x" value="Search" />
-            </fieldset>
-          </form>
-        </li>
-        <li>
-          <%= render 'sittings/recent.html.erb' %>
-        </li>
-        <li>
-          <h2>Members who recently ate olives</h2>
-          <ul>
-            <li><a href="#">Damian Hannan</a> (3 hours ago)</li>
-            <li><a href="#">Magna lacus bibendum mauris</a></li>
-            <li><a href="#">Velit semper nisi molestie</a></li>
-            <li><a href="#">Eget tempor eget nonummy</a></li>
-            <li><a href="#">Nec metus sed donec</a></li>
-            <li><a href="#">Magna lacus bibendum mauris</a></li>
-            <li><a href="#">Velit semper nisi molestie</a></li>
-          </ul>
-        </li>
-      </ul>
-  </div>
-  <!-- end #sidebar -->
-  <div style="clear: both;">&nbsp;</div>
-</div>
-<!-- end #page -->
-<div id="footer">
-  <p>Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
-</div>
-<!-- end #footer -->
 </body>
 </html>
