@@ -20,9 +20,10 @@
         <% if c.member -%>
           <%= link_to image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot"), c.member -%>
           <ul>
-            <li><%= link_to h(c.member.name), c.member -%></li>
-            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "#{ c.member.country }") -%></li>
-            <li><%= c.member.group -%></li>
+            <li><%= link_to h(c.member.name), c.member %></li>
+            <li><%= h c.member.country_name %></li>
+            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "") %></li>
+            <li><%= c.member.group %></li>
           </ul>
         <% end -%>
       </td>
