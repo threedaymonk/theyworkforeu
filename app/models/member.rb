@@ -21,6 +21,10 @@ class Member < ActiveRecord::Base
     "/images/flags/#{ self.country }.gif"
   end
 
+  def sorting_letter
+    sorting_name[0,1]
+  end
+
 private
 
   def set_sorting_name
