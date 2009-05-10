@@ -5,6 +5,10 @@ class Member < ActiveRecord::Base
 
   named_scope :unscraped, :conditions => {:country => nil}
 
+  def self.all_sorting_letters
+    connection.select_values("SELECT DISTINCT SUBSTR(sorting_name,1,1) FROM members ORDER BY sorting_name")
+  end
+
   def euparl_id
     photo[/(\d+)\.jpg/, 1].to_i
   end
