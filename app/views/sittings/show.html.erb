@@ -19,10 +19,10 @@
     <tr>
       <td class="gutter">
         <% if c.member %>
-          <%= image_tag(c.member.photo, :alt=>h(c.member.name)) %>
+          <%= image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot") %>
           <ul>
             <li><%= h(c.member.name) %></li>
-            <li><%= c.member.country %></li>
+            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "#{ c.member.country }") %></li>
             <li><%= c.member.group %></li>
           </ul>
         <% end %>

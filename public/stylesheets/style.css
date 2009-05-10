@@ -94,10 +94,17 @@ hr {
   background: #eee;
 }
 
-.contrib table.contribLayout td.gutter img {
+.contrib table.contribLayout td.gutter img.headshot {
   margin: 20px auto;
   display: block;
   border: 1px solid #ddd;
+}
+.contrib table.contribLayout td.gutter ul {
+  padding: 0;
+}
+.contrib table.contribLayout td.gutter ul li {
+  list-style-type: none;
+  padding: 0 10px 10px;
 }
 
 table.contribParas {
