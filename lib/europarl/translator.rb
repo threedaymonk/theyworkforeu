@@ -9,8 +9,24 @@ module Europarl
     # See also http://code.google.com/apis/ajaxlanguage/documentation/reference.html
 
     ENDPOINT = "http://ajax.googleapis.com/ajax/services/language/translate"
+    MAX_LENGTH = 4000
 
     def self.translate(text, to="en", from="")
+      paragraphs = text.split(/<p>/)
+      chunks = [[]]
+      paragraphs.each do |paragraph|
+        if (chunks.last + [paragraph]).join("<p>").length < MAX_LENGTH
+          chunks.last << paragraph
+        else
+          chunks << [paragraph]
+        end
+      end
+      chunks.map{ |chunk|
+        real_translate(chunk.join("<p>"))
+      }.join("<p>")
+    end
+
+    def self.real_translate(text, to="en", from="")
       params = {
         :langpair => "#{from}|#{to}",
         :q        => text,
@@ -20,7 +36,7 @@ module Europarl
       json     = JSON.parse( response.body )
 
       unless json["responseStatus"] == 200
-        raise StandardError, response["responseDetails"]
+        raise StandardError, response.body #response["responseDetails"]
       end
 
       json["responseData"]["translatedText"]

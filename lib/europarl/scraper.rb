@@ -51,7 +51,7 @@ module Europarl
           contribution.member = member
         when :para
           contribution.original_text ||= ""
-          contribution.original_text << value << "\n"
+          contribution.original_text << "<p>" << value << "</p>"
         end
       end
       yield contribution if contribution.original_text
