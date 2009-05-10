@@ -3,6 +3,7 @@ require File.join(File.dirname(__FILE__), "..", "config", "environment")
 
 Sitting.all.each do |s|
   tags = Europarl::TermExtractor.extract(s.full_translated_text)
+  p tags
   s.tags = tags.to_yaml
   s.save!
 end

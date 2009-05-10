@@ -9,8 +9,7 @@ module Europarl
 
     def self.extract(text, query=nil)
       res = Net::HTTP.post_form(EXTRACTION_URL, { 'appid'=>YAHOO_APP_ID, 'context'=>text, 'query'=>query} )
-      terms = ((Hpricot.XML(res.body))/"Result").map { |x| x.inner_text }
-      puts terms.inspect
+      ((Hpricot.XML(res.body))/"Result").map { |x| x.inner_text }
     end
 
   end
