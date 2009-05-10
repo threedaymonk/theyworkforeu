@@ -22,7 +22,8 @@
           <%= image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot") %>
           <ul>
             <li><%= h(c.member.name) %></li>
-            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "#{ c.member.country }") %></li>
+            <li><%= h c.member.country_name %></li>
+            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "") %></li>
             <li><%= c.member.group %></li>
           </ul>
         <% end %>

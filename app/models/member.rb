@@ -5,4 +5,8 @@ class Member < ActiveRecord::Base
   def euparl_id
     photo[/(\d+)\.jpg/, 1].to_i
   end
+
+  def country_name
+    Country.expand(country)
+  end
 end
