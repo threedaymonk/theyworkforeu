@@ -9,5 +9,39 @@
 </p>
 
 
-<%= link_to 'Edit', edit_sitting_path(@sitting) %> |
-<%= link_to 'Back', sittings_path %>
+<% @sitting.contributions.all.each do |c| %>
+<div class="contrib">
+  <% if c.member %>
+  <h2><%= h(c.member.name) %></h2>
+  <% end %>
+
+  <table class="contribLayout">
+    <tr>
+      <td class="gutter">
+        <% if c.member %>
+          <%= image_tag(c.member.photo, :alt=>h(c.member.name)) %>
+          <ul>
+            <li><%= h(c.member.name) %></li>
+            <li><%= c.member.country %></li>
+            <li><%= c.member.group %></li>
+          </ul>
+        <% end %>
+      </td>
+      <td>
+        <table class="contribParas">
+          <% make_para_pairs(c.translated_text,c.original_text).each do |orig,trans| %>
+          <tr>
+            <td class="trans">
+              <p><%= orig %></p>
+            </td>
+            <td class="orig">
+              <p><%= trans %></p>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+<% end %>
