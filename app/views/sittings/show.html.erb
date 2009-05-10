@@ -1,47 +1,49 @@
-<p>
-  <b>Sat on:</b>
-  <%=h @sitting.sat_on %>
-</p>
+<h1>
+  <%= @page_title = "European Parliament sitting - " + @sitting.sat_on.strftime("%d %B %Y").sub(/^0/,'') -%>
+</h1>
 
 <p>
-  <b>Location:</b>
-  <%=h @sitting.location %>
+  <strong>Location:</strong>
+  <%=h @sitting.location -%>
 </p>
 
 
-<% @sitting.contributions.all.each do |c| %>
+<% @sitting.contributions.all.each do |c| -%>
 <div class="contrib">
-  <% if c.member %>
-  <h2><%= h(c.member.name) %></h2>
-  <% end %>
+  <% if c.member -%>
+  <h2><%= h(c.member.name) -%></h2>
+  <% end -%>
 
   <table class="contribLayout">
     <tr>
       <td class="gutter">
-        <% if c.member %>
-          <%= image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot") %>
+        <% if c.member -%>
+          <%= link_to image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot"), c.member -%>
           <ul>
-            <li><%= h(c.member.name) %></li>
-            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "#{ c.member.country }") %></li>
-            <li><%= c.member.group %></li>
+            <li><%= link_to h(c.member.name), c.member -%></li>
+            <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "#{ c.member.country }") -%></li>
+            <li><%= c.member.group -%></li>
           </ul>
-        <% end %>
+        <% end -%>
       </td>
       <td>
         <table class="contribParas">
-          <% make_para_pairs(c.translated_text,c.original_text).each do |orig,trans| %>
+          <% make_para_pairs(c.translated_text,c.original_text).each do |orig,trans| -%>
           <tr>
             <td class="trans">
-              <p><%= orig %></p>
+              <p><%= orig -%></p>
             </td>
             <td class="orig">
-              <p><%= trans %></p>
+              <p><%= trans -%></p>
             </td>
           </tr>
-          <% end %>
+          <% end -%>
         </table>
       </td>
     </tr>
   </table>
 </div>
-<% end %>
+<% if c.member -%>
+<div class="contriBreak"></div>
+<% end -%>
+<% end -%>

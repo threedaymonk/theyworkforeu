@@ -1,9 +1,8 @@
 body {
-	margin: 0;
+	margin: 16px 32px;
 	font: 15px verdana, Helvetica, sans-serif;
 	line-height: 20px;
 	color: #212121;
-	margin: 0 40px;
 }
 
 h1, h2, h3 {
@@ -30,10 +29,17 @@ hr {
 }
 
 /* Header */
-#header h1 a {
+#header {
+  border-bottom: 3px solid #ddd;
+  padding-bottom: 10px;
+}
+
+#header h2 a {
 	text-decoration: none;
 	color: #333;
+	font-size: 32pt;
 }
+
 
 /* Content */
 
@@ -74,7 +80,7 @@ hr {
 }
 
 
-.contrib {
+.contribBreak {
   margin-bottom: 30px;
 }
 
@@ -83,6 +89,11 @@ hr {
   line-height: 36pt;
   padding: 16px 0 0 0;
   border-top: 8px solid #ddd;
+  margin: 16px 0;
+}
+
+.contrib table.contribLayout {
+  width: 100%;
 }
 
 .contrib table.contribLayout td {
