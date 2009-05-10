@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.xml
   def index
-    @members = Member.all(:order=>'name')
+    @members = Member.all(:order=>'sorting_name ASC')
 
     respond_to do |format|
       format.html # index.html.erb

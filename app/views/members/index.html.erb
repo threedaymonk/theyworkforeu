@@ -1,8 +1,7 @@
 <h1><%= @page_title = 'European Parliament Members' %></h1>
 
 <div class="flickr_pagination">
-<%
-used_letters = Member.connection.select_values("SELECT DISTINCT SUBSTR(name,1,1) FROM members ORDER BY name")
+<% used_letters = Member.all_sorting_letters
 ('A'..'Z').each do |letter| %>
   <% if used_letters.include?(letter) %>
   <a href="#<%= letter.downcase %>"><%= letter %></a>
@@ -15,17 +14,17 @@ used_letters = Member.connection.select_values("SELECT DISTINCT SUBSTR(name,1,1)
 <%
 prev_chr = nil
 @members.each do |member| %>
-  <% if prev_chr != member.name[0] %>
+  <% if prev_chr != member.sorting_letter %>
 
   <% if prev_chr %>
   </div>
   <br clear="both" />
   <% end %>
 
-  <h3 class="photoList"><a name="<%= member.name[0].chr.downcase %>"></a><%= member.name[0].chr.upcase %></h3>
+  <h3 class="photoList"><a name="<%= member.sorting_letter.downcase %>"></a><%= member.sorting_letter %></h3>
   <div class="photoList">
   <% end %>
-  <% prev_chr = member.name[0] %>
+  <% prev_chr = member.sorting_letter %>
   <div class="photoListMember">
     <% country = h(Country.expand(member.country)) %>
     <%= link_to image_tag(member.photo, :class=>'headshot'), member %>
