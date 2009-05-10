@@ -9,8 +9,14 @@
   <ul>
   <% @sittings.each do |sitting| -%>
     <li>
-      <%= link_to sitting.sat_on.strftime("%d %B %Y").sub(/^0/,''), sitting -%>
+      <h2><%= link_to sitting.sat_on.strftime("%d %B %Y").sub(/^0/,''), sitting -%> -
       <%=h sitting.location -%>
+      </h2>
+      <p><strong>Tags:</strong>
+      <% (YAML::load(sitting.tags.to_s)).to_a.each do |tag| %>
+        <%= link_to h(tag), tag_path(CGI.escape(h(tag))) %>
+      <% end %>
+      </p>
     </li>
   <% end -%>
   </ul>

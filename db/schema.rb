@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090509234209) do
+ActiveRecord::Schema.define(:version => 20090510092841) do
 
   create_table "contributions", :force => true do |t|
     t.text     "original_text"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20090509234209) do
     t.datetime "updated_at"
     t.string   "country"
     t.string   "group"
+    t.string   "sorting_name"
   end
 
   create_table "sittings", :force => true do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20090509234209) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tags"
   end
 
 end

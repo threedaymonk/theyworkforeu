@@ -26,3 +26,5 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+YAHOO_APP_ID = nil # Shouldn't need to use this in production, but you never know :)
