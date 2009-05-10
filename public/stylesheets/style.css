@@ -86,20 +86,23 @@ h3.photoList {
   margin: 2px;
   padding: 4px;
   background: #eee;
+  overflow: hidden;
 }
 
 .photoList .photoListMember img.headshot {
   width: 100px;
-  display: block;
   margin: 0 auto;
   border: 1px solid #ccc;
+  display: block;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .photoList .photoListMember img.flag {
-  display: inline;
   height: 16px;
-  margin: 0 2px 0 0;
-  vertical-align: middle;
+  display: block;
+  padding: 0;
+  margin: 2px auto;
 }
 
 .photoList .photoListMember a {
