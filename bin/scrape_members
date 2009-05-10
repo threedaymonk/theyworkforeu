@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), "..", "config", "environment")
+require 'open-uri'
+
+Member.unscraped.each do |member|
+  next if member.euparl_id == 0
+  puts member.name
+  Europarl::MemberScraper.new(member).update!
+end
