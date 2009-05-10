@@ -2,12 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title><%= @page_title %><%= " - " unless @page_title.blank? %>TheyWorkFor.EU</title>
+  <title><%= @page_title.blank? ? 'TheyWorkFor.EU' : @page_title -%></title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen" />
+  <%= yield :head -%>
 </head>
 <body>
 <div id="header">
 	<h2><a href="/">TheyWorkFor.EU</a></h2>
+  <div id="mainNav">
+    <ul>
+      <li><%= link_to 'Home', root_path -%></li>
+      <li><%= link_to 'Sittings', sittings_path -%></li>
+      <li><%= link_to 'Members', members_path -%></li>
+    </ul>
+  </div>
 </div>
 
 <div id="content">

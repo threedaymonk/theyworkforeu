@@ -1,12 +1,11 @@
 body {
 	margin: 16px 32px;
 	font: 15px verdana, Helvetica, sans-serif;
-	line-height: 20px;
 	color: #212121;
 }
 
 h1, h2, h3 {
-  margin: 10px;
+  margin: 5px 10px;
 	font-family: Georgia, Helvetica, sans-serif;
 	color: #333;
 }
@@ -31,13 +30,36 @@ hr {
 /* Header */
 #header {
   border-bottom: 3px solid #ddd;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
 }
 
 #header h2 a {
 	text-decoration: none;
 	color: #333;
 	font-size: 32pt;
+}
+
+#header #mainNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header #mainNav li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+#header #mainNav li a {
+  background: #ccc;
+  padding: 4px;
+  text-decoration: none;
+}
+
+#header #mainNav li a:hover {
+  background: #333;
+  color: #ccc;
 }
 
 
@@ -47,25 +69,51 @@ hr {
 	padding-top: 5px;
 }
 
-.photoList {
+h3.photoList {
+  clear: both;
+  margin: 40px 0 0 10px;
+  font-size: 38pt;
+}
 
+.photoList {
+  margin: 0 auto;
 }
 
 .photoList .photoListMember {
   float: left;
-  width: 90px;
-  height: 180px;
-  margin: 1px;
+  width: 150px;
+  height: 200px;
+  margin: 2px;
+  padding: 4px;
   background: #eee;
 }
 
-.photoList .photoListMember img {
-  width: 60px;
+.photoList .photoListMember img.headshot {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+.photoList .photoListMember img.flag {
+  display: inline;
+  height: 16px;
+  margin: 0 2px 0 0;
+  vertical-align: middle;
 }
 
 .photoList .photoListMember a {
   text-decoration: none;
+  font-weight: bold;
 }
+
+.photoList .photoListMemberGroup a {
+  display: block;
+  font-size: small;
+  font-weight: normal;
+  color: #666;
+}
+
 
 .memberLink img {
   float: left;
@@ -86,7 +134,6 @@ hr {
 
 .contrib h2 {
   font-size: 48pt;
-  line-height: 36pt;
   padding: 16px 0 0 0;
   border-top: 8px solid #ddd;
   margin: 16px 0;
@@ -118,6 +165,10 @@ hr {
   padding: 0 10px 10px;
 }
 
+.contrib table.contribLayout td ul.gutterExtras li  {
+  font-size: 8pt;
+}
+
 table.contribParas {
   width: 100%;
   padding: 0;
@@ -135,7 +186,7 @@ table.contribParas td.trans {
 }
 
 table.contribParas td.orig {
-  padding-left: 15px;
   color: #999;
+  padding-left: 15px;
   border-right: 1px dashed #fff;
 }

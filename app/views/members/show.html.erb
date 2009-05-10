@@ -1,9 +1,44 @@
-<% @page_title = h @member.name %>
-<h1><%=h @member.name %></h1>
+<h1><%= @page_title = h(@member.name) -%></h1>
 
-<%= image_tag(@member.photo) %>
+<div class="contrib">
 
-<p>
-  <b>Party:</b>
-  <%=h @member.party %>
-</p>
+  <table class="contribLayout">
+    <tr>
+      <td class="gutter">
+        <%= image_tag(@member.photo, :alt => h(@member.name), :class => "headshot") -%>
+        <ul>
+          <li><%= @member.name %></li>
+          <li><%= h @member.country_name %></li>
+          <li><%= image_tag("/images/flags/#{ @member.country }.gif", :alt=> "") %></li>
+          <li><%= @member.group %></li>
+        </ul>
+
+        <ul class="gutterExtras">
+          <li><%= link_to "#{h @member.name} on official European Parliament website", @member.euparl_url %></li>
+        </ul>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th>Sitting</th>
+            <th>Number of contributions</th>
+          </tr>
+          <%
+          total_sittings = 0
+          for sitting in @member.sittings %>
+          <% sittings = sitting.contributions.count(:id, :conditions=>["member_id=?",@member])
+          total_sittings += sittings -%>
+          <tr>
+            <td><%= link_to sitting.sat_on.strftime("%d %b %Y").sub(/^0/,''), sitting -%></td>
+            <td><%= sittings %></td>
+          </tr>
+          <% end -%>
+          <tr>
+            <th>Total</th>
+            <td><%= total_sittings %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

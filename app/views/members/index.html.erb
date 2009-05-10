@@ -1,9 +1,22 @@
-<% @page_title = 'European Parliament Members' %>
-<div class="info">
-  <h1>European Parliament Members</h1>
-  <div class="photoList">
-  <% @members.each do |member| %>
-    <div class="photoListMember"><%= link_to image_tag(member.photo, :width=>85) + h(member.name), member %>, <%= link_to h(member.party), member %></div>
-  <% end %>
+<h1><%= @page_title = 'European Parliament Members' %></h1>
+
+<%
+prev_chr = nil
+@members.each do |member| %>
+  <% if prev_chr != member.name[0] %>
+
+  <% if prev_chr %>
   </div>
+  <br clear="both" />
+  <% end %>
+
+  <h3 class="photoList"><%= member.name[0].chr %></h3>
+  <div class="photoList">
+  <% end %>
+  <% prev_chr = member.name[0] %>
+  <div class="photoListMember">
+    <%= link_to image_tag(member.photo, :class=>'headshot') + "<br />" + image_tag(member.flag_path, :class=>'flag') + h(member.name), member %>
+    <span class="photoListMemberGroup"><%= link_to h(member.group), '#' %></span>
+  </div>
+<% end %>
 </div>

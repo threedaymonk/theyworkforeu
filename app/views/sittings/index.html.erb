@@ -1,10 +1,17 @@
-<% @page_title = 'European Parliament sittings' %>
+<% @page_title = 'European Parliament sittings' -%>
+
+<% content_for :head do -%>
+<link href="<%= sittings_path(:format=>'atom') %>" type="application/atom+xml" rel="alternate" title="Sittings atom Feed" />
+<% end -%>
+
 <div class="info">
   <h1>European Parliament sittings</h1>
-  <% @sittings.each do |sitting| %>
-  <div>
-    <%= link_to sitting.sat_on, sitting %>
-    <%=h sitting.location %>
-  </div>
-  <% end %>
+  <ul>
+  <% @sittings.each do |sitting| -%>
+    <li>
+      <%= link_to sitting.sat_on.strftime("%d %B %Y").sub(/^0/,''), sitting -%>
+      <%=h sitting.location -%>
+    </li>
+  <% end -%>
+  </ul>
 </div>

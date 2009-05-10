@@ -1,12 +1,6 @@
 <h1>
-  <%= @page_title = "European Parliament sitting - " + @sitting.sat_on.strftime("%d %B %Y").sub(/^0/,'') -%>
+  <%= @page_title = "European Parliament sitting - " + @sitting.sat_on.strftime("%d %B %Y").sub(/^0/,'') + " - " + h(@sitting.location) -%>
 </h1>
-
-<p>
-  <strong>Location:</strong>
-  <%=h @sitting.location -%>
-</p>
-
 
 <% @sitting.contributions.all.each do |c| -%>
 <div class="contrib">
@@ -18,12 +12,15 @@
     <tr>
       <td class="gutter">
         <% if c.member -%>
-          <%= link_to image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot"), c.member -%>
           <ul>
-            <li><%= link_to h(c.member.name), c.member %></li>
+            <li><%= link_to image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot") + h(c.member.name), c.member %></li>
             <li><%= h c.member.country_name %></li>
             <li><%= image_tag("/images/flags/#{ c.member.country }.gif", :alt=> "") %></li>
             <li><%= c.member.group %></li>
+          </ul>
+
+          <ul class="gutterExtras">
+            <li><%= link_to 'permalink for this contrbution', c %></li>
           </ul>
         <% end -%>
       </td>

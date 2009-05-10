@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>European Parliament sittings</title>
+ <subtitle></subtitle>
+ <link href="<%= sittings_url(:format=>'atom') %>" rel="self"/>
+ <link href="<%= root_url %>"/>
+ <updated><%= Sitting.maximum(:updated_at).strftime "%Y-%m-%dT%H:%M:%SZ" %></updated>
+ <author>
+   <name>TheyWorkFor.EU</name>
+   <email>feedback@theyworkfor.eu</email>
+ </author>
+ <id>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6</id>
+
+ <% @sittings.each do |sitting| %>
+ <entry>
+   <title>European Parliament sitting <%= sitting.sat_on.strftime("%d %B %Y").sub(/^0/,'') + " - " + h(sitting.location) %> </title>
+   <link href="<%= sitting_url(sitting) %>"/>
+   <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+   <updated><%= sitting.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ" %></updated>
+   <summary><%= truncate(sitting.contributions.first.translated_text) %></summary>
+ </entry>
+ <% end %>
+
+</feed>

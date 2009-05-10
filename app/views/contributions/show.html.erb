@@ -1,18 +1,40 @@
-<p>
-  <b>Original text:</b>
-  <%=h @contribution.original_text %>
-</p>
+<% c = @contribution -%>
 
-<p>
-  <b>Translated text:</b>
-  <%=h @contribution.translated_text %>
-</p>
+<% @page_title = "Contribution from " + h(c.member.name) + " in " if c.member %>
 
-<p>
-  <b>Member:</b>
-  <%=h @contribution.member_id %>
-</p>
+<h1>
+  <%= @page_title += "European Parliament sitting on " + c.sitting.sat_on.strftime("%d %B %Y").sub(/^0/,'') + " - " + h(c.sitting.location) -%>
+</h1>
 
+<div class="contrib">
 
-<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
-<%= link_to 'Back', contributions_path %>
+  <table class="contribLayout">
+    <tr>
+      <td class="gutter">
+        <% if c.member -%>
+          <%= link_to image_tag(c.member.photo, :alt => h(c.member.name), :class => "headshot"), c.member -%>
+          <ul>
+            <li><%= link_to h(c.member.name), c.member %></li>
+            <li><%= h c.member.country_name %></li>
+            <li><%= image_tag(c.member.flag_url, :alt=> "") %></li>
+            <li><%= c.member.group %></li>
+          </ul>
+        <% end -%>
+      </td>
+      <td>
+        <table class="contribParas">
+          <% make_para_pairs(c.translated_text,c.original_text).each do |orig,trans| -%>
+          <tr>
+            <td class="trans">
+              <p><%= orig -%></p>
+            </td>
+            <td class="orig">
+              <p><%= trans -%></p>
+            </td>
+          </tr>
+          <% end -%>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

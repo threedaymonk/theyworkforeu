@@ -12,8 +12,8 @@ module ApplicationHelper
 
 
   def make_para_pairs(orig,trans)
-    a = orig.sub(/\A<p>|<\/p>\Z/i,'').split("</p><p>")
-    b = trans.sub(/\A<p>|<\/p>\Z/i,'').split("</p><p>")
+    a = orig.gsub(/\A<p>|<\/p>\Z/i,'').split("</p><p>")
+    b = trans.gsub(/\A<p>|<\/p>\Z/i,'').split("</p><p>")
     a.zip(b)
   end
 
