@@ -35,6 +35,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def html_sample(name)
+    File.read(File.join(File.dirname(__FILE__), 'fixtures', name + '.html'))
+  end
 end
 
 require "shoulda"
