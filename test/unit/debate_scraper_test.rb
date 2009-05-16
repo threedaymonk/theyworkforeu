@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), "..", "test_helper")
 
-class ScraperTest < ActiveSupport::TestCase
+class DebateScraperTest < ActiveSupport::TestCase
 
   should "construct URL for plenary sessions debate on specified date" do
     expected = "http://www.europarl.europa.eu/sides/getDoc.do?pubRef="+
